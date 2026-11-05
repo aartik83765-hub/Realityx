@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>REALITYX | Website Intelligence</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080d1b;
+    --panel: #111a2e;
+    --border: #293954;
+    --cyan: #5de4ff;
+    --purple: #a78bfa;
+    --text: #eef4ff;
+    --muted: #9aabc8;
+}
+
+body {
+    background:
+        radial-gradient(circle at top left, #172d4d, transparent 40%),
+        var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 45px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    color: #08101f;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo h1 {
+    font-size: 22px;
+    letter-spacing: 3px;
+}
+
+.logo p {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+.status {
+    color: var(--cyan);
+    border: 1px solid #24576b;
+    padding: 9px 13px;
+    border-radius: 30px;
+    font-size: 12px;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.hero h2 {
+    font-size: clamp(38px, 5vw, 65px);
+    margin: 20px 0;
+    line-height: 1.05;
+}
+
+.hero h2 span {
+    color: var(--cyan);
+}
+
+.description {
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 550px;
+}
+
+.card {
+    background: linear-gradient(145deg, #131e33, #0c1425);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 45px #0003;
+}
+
+.audit-card {
+    margin-top: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 12px;
+    color: #dce7fa;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="url"] {
+    flex: 1;
+    min-width: 0;
+    background: #070d19;
+    border: 1px solid #30415f;
+    border-radius: 12px;
+    padding: 15px;
+    color: white;
+    outline: none;
+}
+
+input[type="url"]:focus {
+    border-color: var(--cyan);
+}
+
+button {
+    background: linear-gradient(135deg, var(--cyan), #a5f3fc);
+    color: #07111c;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.options {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.options input {
+    accent-color: var(--cyan);
+}
+
+.visual {
+    text-align: center;
+}
+
+.orbit {
+    width: 200px;
+    height: 200px;
+    margin: 10px auto 25px;
+    border: 1px solid #5de4ff80;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    position: relative;
+    box-shadow: 0 0 50px #5de4ff12;
+    animation: float 4s ease-in-out infinite;
+}
+
+.orbit::before,
+.orbit::after {
+    content: "";
+    position: absolute;
+    border: 1px solid #a78bfa80;
+    border-radius: 50%;
+}
+
+.orbit::before {
+    inset: 25px;
+}
+
+.orbit::after {
+    inset: 50px;
+    border-color: #5de4ff80;
+}
+
+.core {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    box-shadow: 0 0 35px #5de4ff;
+    z-index: 2;
+}
+
+.visual p {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.stat h3 {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.stat .number {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 15px 0 7px;
+}
+
+.stat small {
+    color: var(--muted);
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 15px;
+    align-items: center;
+}
+
+.section-title h3 {
+    font-size: 18px;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.finding {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.finding:last-child {
+    border-bottom: none;
+}
+
+.finding h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.finding p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+.passed {
+    background: #123b2a;
+    color: #4ade80;
+}
+
+.warning {
+    background: #443416;
+    color: #fbbf24;
+}
+
+.info {
+    background: #30234d;
+    color: #c4b5fd;
+}
+
+#loading,
+#error {
+    display: none;
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+#loading {
+    color: var(--cyan);
+}
+
+#error {
+    color: #fda4af;
+}
+
+.empty {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+th, td {
+    padding: 13px 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    overflow-wrap: anywhere;
+}
+
+th {
+    color: var(--muted);
+}
+
+td a {
+    color: var(--cyan);
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.notice {
+    margin-top: 20px;
+    padding: 14px;
+    background: #17162c;
+    border: 1px solid #3a355c;
+    color: #c4b5fd;
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+footer {
+    text-align: center;
+    color: #7183a4;
+    font-size: 11px;
+    line-height: 1.8;
+    padding: 35px 0 10px;
+}
+
+@media (max-width: 800px) {
+    .container {
+        padding: 16px;
+    }
+
+    header {
+        align-items: flex-start;
+    }
+
+    .hero,
+    .results {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+
+    .status {
+        font-size: 10px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    .logo h1 {
+        font-size: 18px;
+    }
+
+    .logo p {
+        letter-spacing: 1px;
+    }
+
+    .hero h2 {
+        font-size: 38px;
+    }
+
+    .stats {
+        gap: 10px;
+    }
+
+    .stat .number {
+        font-size: 25px;
+    }
+}
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    button,
+    .status,
+    .orbit,
+    .audit-card,
+    footer {
+        display: none !important;
+    }
+
+    .card {
+        background: white !important;
+        color: black !important;
+        border: 1px solid #cccccc;
+        box-shadow: none;
+        break-inside: avoid;
+    }
+
+    .finding p,
+    .muted,
+    .empty,
+    .stat h3,
+    .stat small {
+        color: #333333 !important;
+    }
+
+    a {
+        color: black !important;
+    }
+}
+#auditTrendChart {
+    max-width: 100%;
+    height: 220px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <div class="logo">
+        <div class="logo-icon">R</div>
+        <div>
+            <h1>REALITYX</h1>
+            <p>WEBSITE INTELLIGENCE</p>
+        </div>
+    </div>
+
+    <div class="status">● AUDIT ENGINE</div>
+</header>
+
+<section class="hero">
+    <div>
+        <div class="eyebrow">AUTOMATED WEB QUALITY ANALYSIS</div>
+
+        <h2>
+            Break it before<br>
+            <span>your users do.</span>
+        </h2>
+
+        <p class="description">
+            Analyse website structure, detect common web-quality
+            issues and investigate links with REALITYX.
+            Get useful findings and recommendations in one dashboard.
+        </p>
+
+        <div class="card audit-card">
+            <label for="url">WEBSITE URL</label>
+
+            <div class="input-row">
+                <input
+                    id="url"
+                    type="url"
+                    placeholder="https://example.com"
+                    value="https://example.com"
+                >
+
+                <button id="run">Run Audit ↗</button>
+            </div>
+
+            <div class="options">
+                <label style="margin:0;font-weight:normal">
+                    <input id="checkLinks" type="checkbox" checked>
+                    Check sample links
+                </label>
+            </div>
+
+            <div id="loading">Auditing website, please wait...</div>
+            <div id="error"></div>
+        </div>
+    </div>
+
+    <div class="card visual">
+        <div class="orbit">
+            <div class="core"></div>
+        </div>
+
+        <p>STRUCTURE · LINKS · QUALITY</p>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="card stat">
+        <h3>QUALITY SCORE</h3>
+        <div class="number" id="score">—</div>
+        <small>Heuristic score / 100</small>
+    </div>
+
+    <div class="card stat">
+        <h3>CHECKS PASSED</h3>
+        <div class="number" id="passed">—</div>
+        <small>Successful checks</small>
+    </div>
+
+    <div class="card stat">
+        <h3>WARNINGS</h3>
+        <div class="number" id="warnings">—</div>
+        <small>Needs review</small>
+    </div>
+
+    <div class="card stat">
+        <h3>RESPONSE TIME</h3>
+        <div class="number" id="time">—</div>
+        <small>Page response seconds</small>
+    </div>
+</section>
+<section class="stats">
+    <div class="card stat">
+        <h3>INTERNAL LINKS</h3>
+        <div class="number" id="internalLinks">—</div>
+        <small>Same website</small>
+    </div>
+
+    <div class="card stat">
+        <h3>EXTERNAL LINKS</h3>
+        <div class="number" id="externalLinks">—</div>
+        <small>Other websites</small>
+    </div>
+
+    <div class="card stat">
+        <h3>WORKING LINKS</h3>
+        <div class="number" id="workingLinks">—</div>
+        <small>Successful responses</small>
+    </div>
+
+    <div class="card stat">
+        <h3>BROKEN LINKS</h3>
+        <div class="number" id="brokenLinks">—</div>
+        <small>Failed responses</small>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="card stat">
+        <h3>REDIRECTED LINKS</h3>
+        <div class="number" id="redirectedLinks">—</div>
+        <small>Redirect responses</small>
+    </div>
+</section>
+<div class="section-title">
+    <h3>Audit Findings</h3>
+    <button id="downloadReport" type="button">
+    Download Audit Report ↓
+</button>
+    <span class="muted" id="auditUrl">Awaiting audit</span>
+</div>
+<div class="section-title">
+    <h3>Detailed Bug Report</h3>
+</div>
+
+<div class="card" id="bugReport">
+    <p class="empty">Run an audit to generate a bug report.</p>
+</div>
+<section class="results">
+    <div class="card">
+        <div class="section-title" style="margin-top:0">
+            <h3>Detected Signals</h3>
+        </div>
+
+        <div id="findings" class="empty">
+            Run an audit to view detected issues and recommendations.
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="section-title" style="margin-top:0">
+            <h3>Page Overview</h3>
+        </div>
+
+        <div id="overview" class="empty">
+            <div class="section-title">
+    <h3>Quality Breakdown</h3>
+</div>
+
+<div id="qualityBreakdown" class="empty">
+    Quality details will appear after audit.
+</div>
+            No page data yet.
+        </div>
+
+        <div class="notice">
+            This prototype checks HTML and selected links.
+            It does not fully test JavaScript interactions,
+            login flows or website security.
+        </div>
+    </div>
+</section>
+
+<div class="section-title">
+    <h3>Sampled Link Results</h3>
+    <span class="muted" id="linksCount">0 checked</span>
+</div>
+
+<div class="card table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>LINK</th>
+                <th>Type</th>
+                <th>HTTP</th>
+                <th>RESULT</th>
+            </tr>
+        </thead>
+
+        <tbody id="linksBody">
+            <tr>
+                <td colspan="4" class="empty">
+                    No link results yet.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="section-title">
+    <h3>Audit History</h3>
+    <button id="clearHistory" type="button">
+        Clear History
+    </button>
+</div>
+
+<div class="card">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>WEBSITE</th>
+                    <th>SCORE</th>
+                    <th>WARNINGS</th>
+                    <th>DATE</th>
+                </tr>
+            </thead>
+            <tbody id="historyBody">
+                <tr>
+                    <td colspan="4">No audit history yet.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="section-title">
+    <h3>Audit Comparison</h3>
+    <span class="muted">Previous vs Latest</span>
+</div>
+
+<div class="card">
+    <div id="comparisonResult" class="empty">
+        Complete at least two audits to compare results.
+    </div>
+</div>
+<div class="section-title">
+    <h3>Audit Trend Analytics</h3>
+    <span class="muted">Last 10 Audits</span>
+</div>
+
+<div class="card">
+    <p class="muted" style="margin-bottom:15px">
+        Website quality score over time
+    </p>
+
+    <canvas
+        id="auditTrendChart"
+        height="220"
+        style="width:100%;display:block">
+    </canvas>
+
+    <p id="trendMessage" class="empty"
+       style="margin-top:12px">
+        Complete audits to generate your trend chart.
+    </p>
+</div>
+<div class="section-title">
+    <h3>Responsible Testing</h3>
+</div>
+
+<div class="card">
+    <p class="empty">
+        Only test websites you own or have explicit permission to assess.
+        Some websites block automated requests, and dynamic content may
+        not appear in raw HTML. Review findings manually before making
+        decisions.
+    </p>
+</div>
+
+<footer>
+    REALITYX v1.0<br>
+    Intelligent Website Quality Toolkit
+</footer>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+function renderFindings(findings) {
+    if (!findings.length) {
+        $("findings").textContent = "No findings returned.";
+        return;
+    }
+
+    $("findings").innerHTML = findings.map(item => `
+        <div class="finding">
+            <span class="badge ${escapeHTML(item.severity)}">
+                ${escapeHTML(item.severity.toUpperCase())}
+            </span>
+
+            <h4>${escapeHTML(item.title)}</h4>
+
+            <p>${escapeHTML(item.detail)}</p>
+
+            <p style="margin-top:8px">
+                ↳ ${escapeHTML(item.recommendation)}
+            </p>
+        </div>
+    `).join("");
+}
+
+function renderResults(data) {
+    latestAuditData = data;
+    $("score").textContent = data.score;
+    $("passed").textContent = data.summary.passed;
+    $("warnings").textContent = data.summary.warnings;
+    $("internalLinks").textContent = data.summary.internal_links;
+    $("externalLinks").textContent = data.summary.external_links;
+    $("workingLinks").textContent = data.summary.working_links;
+    $("brokenLinks").textContent = data.summary.broken_links;
+    $("redirectedLinks").textContent = data.summary.redirected_links;
+    $("time").textContent = data.response_time_seconds + "s";
+
+    $("auditUrl").textContent = data.final_url;
+
+    renderFindings(data.findings);
+const quality = data.quality_breakdown;
+
+    $("qualityBreakdown").innerHTML = `
+        <div class="finding">
+            <h4>Overall Quality: ${quality.overall}/100</h4>
+            <p>SEO Score: ${quality.seo}/100</p>
+            <p>Accessibility: ${quality.accessibility}/100</p>
+            <p>Link Health: ${
+                quality.link_health === null
+                ? "Not checked"
+                : quality.link_health + "/100"
+            }</p>
+        </div>
+    `;
+    $("overview").innerHTML = `
+        <div class="finding">
+            <h4>Page Title</h4>
+            <p>${escapeHTML(data.page_title)}</p>
+        </div>
+
+        <div class="finding">
+            <h4>HTTP Status</h4>
+            <p>${escapeHTML(data.status_code)}</p>
+        </div>
+
+        <div class="finding">
+            <h4>HTML Size</h4>
+            <p>${escapeHTML(data.html_size_kb)} KB</p>
+        </div>
+
+        <div class="finding">
+            <h4>Page Elements</h4>
+            <p>
+                ${data.summary.images} images ·
+                ${data.summary.headings_found} headings ·
+                ${data.summary.forms_found} forms
+            </p>
+        </div>
+
+        <div class="finding">
+            <h4>Audit Duration</h4>
+            <p>${escapeHTML(data.audit_duration_seconds)} seconds</p>
+        </div>
+    `;
+
+    $("linksCount").textContent =
+        data.summary.links_checked + " checked";
+
+    if (!data.links.length) {
+        $("linksBody").innerHTML = `
+            <tr>
+                <td colspan="3">No links were checked.</td>
+            </tr>
+        `;
+        return;
+    }
+
+    $("linksBody").innerHTML = data.links.map(link => `
+        <tr>
+            <td>
+                <a href="${escapeHTML(link.url)}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    ${escapeHTML(link.text)}
+                </a>
+            </td>
+
+            <td>${escapeHTML(link.type || "—").toUpperCase()}</td>
+
+            <td>${link.status_code ?? "—"}</td>
+
+            <td>
+                <span class="badge ${
+                    !link.ok ? "warning" :
+                    link.redirected ? "info" : "passed"
+                }">
+                    ${
+                        !link.ok ? "BROKEN" :
+                        link.redirected ? "REDIRECTED" : "WORKING"
+                    }
+                </span>
+            </td>
+        </tr>
+    `).join("");
+}
+
+$("run").addEventListener("click", async () => {
+    const url = $("url").value.trim();
+
+    $("error").style.display = "none";
+
+    if (!url) {
+        $("error").textContent = "Please enter a website URL.";
+        $("error").style.display = "block";
+        return;
+    }
+
+    $("loading").style.display = "block";
+    $("run").disabled = true;
+
+    try {
+        const response = await fetch("/api/audit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                url,
+                check_links: $("checkLinks").checked,
+                max_links: 20
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.detail || "Audit failed. Please check the URL."
+            );
+        }
+
+        renderResults(data);
+        saveAuditHistory(data);
+        const bugs = data.bug_report || [];
+
+    $("bugReport").innerHTML = bugs.length
+        ? bugs.map(bug => `
+            <div class="finding">
+                <span class="badge ${escapeHTML(bug.severity)}">
+                    ${escapeHTML(bug.severity.toUpperCase())}
+                </span>
+                <h4>${escapeHTML(bug.issue)}</h4>
+                <p>${escapeHTML(bug.details)}</p>
+                <p style="margin-top:8px">
+                    Solution: ${escapeHTML(bug.solution)}
+                </p>
+            </div>
+        `).join("")
+        : '<p class="empty">No warning or critical findings detected.</p>';
+
+    } catch (error) {
+        $("error").textContent =
+            error.message ||
+            "Could not connect to the audit server.";
+
+        $("error").style.display = "block";
+
+    } finally {
+        $("loading").style.display = "none";
+        $("run").disabled = false;
+    }
+});
+let latestAuditData = null;
+
+$("downloadReport").addEventListener("click", () => {
+    if (!latestAuditData) {
+        alert("Please run an audit first.");
+        return;
+    }
+
+    window.print();
+});
+function saveAuditHistory(data) {
+    let history = JSON.parse(
+        localStorage.getItem("realityx_history") || "[]"
+    );
+
+    history.unshift({
+        url: data.final_url,
+        score: data.score,
+        warnings: data.summary.warnings,
+        date: new Date().toLocaleString()
+    });
+
+    history = history.slice(0, 10);
+
+    localStorage.setItem(
+        "realityx_history",
+        JSON.stringify(history)
+    );
+
+    renderHistory();
+}
+
+function renderHistory() {
+    const history = JSON.parse(
+        localStorage.getItem("realityx_history") || "[]"
+    );
+
+    $("historyBody").innerHTML = history.length
+        ? history.map(item => `
+            <tr>
+                <td>${escapeHTML(item.url)}</td>
+                <td>${escapeHTML(item.score)}/100</td>
+                <td>${escapeHTML(item.warnings)}</td>
+                <td>${escapeHTML(item.date)}</td>
+            </tr>
+        `).join("")
+        : '<tr><td colspan="4">No audit history yet.</td></tr>';
+}
+function renderComparison() {
+    const history = JSON.parse(
+        localStorage.getItem("realityx_history") || "[]"
+    );
+
+    const box = $("comparisonResult");
+
+    if (history.length < 2) {
+        box.textContent =
+            "Complete at least two audits to compare results.";
+        return;
+    }
+    function renderTrendChart() {
+    const history = JSON.parse(
+        localStorage.getItem("realityx_history") || "[]"
+    ).slice(0, 10).reverse();
+
+    const canvas = $("auditTrendChart");
+    const message = $("trendMessage");
+
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+
+    const width = canvas.clientWidth || 600;
+    const height = 220;
+
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+
+    if (history.length < 2) {
+        message.textContent =
+            "Complete at least two audits to view the trend.";
+        return;
+    }
+
+    message.textContent =
+        `${history.length} audit records displayed.`;
+
+    const left = 38;
+    const right = width - 15;
+    const top = 20;
+    const bottom = height - 35;
+
+    const chartHeight = bottom - top;
+    const chartWidth = right - left;
+
+    ctx.font = "11px Arial";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#9aabc8";
+    ctx.strokeStyle = "#293954";
+    ctx.lineWidth = 1;
+
+    [0, 25, 50, 75, 100].forEach(value => {
+        const y = bottom - (value / 100) * chartHeight;
+
+        ctx.beginPath();
+        ctx.moveTo(left, y);
+        ctx.lineTo(right, y);
+        ctx.stroke();
+
+        ctx.fillText(value, left - 8, y + 4);
+    });
+
+    const points = history.map((item, index) => ({
+        x: left + (
+            history.length === 1
+                ? chartWidth / 2
+                : index * chartWidth / (history.length - 1)
+        ),
+        y: bottom - (
+            Math.max(0, Math.min(100, Number(item.score) || 0))
+            / 100
+        ) * chartHeight,
+        score: Number(item.score) || 0,
+        date: item.date
+    }));
+
+    ctx.beginPath();
+    ctx.strokeStyle = "#5de4ff";
+    ctx.lineWidth = 3;
+
+    points.forEach((point, index) => {
+        if (index === 0) {
+            ctx.moveTo(point.x, point.y);
+        } else {
+            ctx.lineTo(point.x, point.y);
+        }
+    });
+
+    ctx.stroke();
+
+    points.forEach(point => {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 5, 0, Math.PI * 2);
+        ctx.fillStyle = "#a78bfa";
+        ctx.fill();
+
+        ctx.fillStyle = "#eef4ff";
+        ctx.textAlign = "center";
+        ctx.fillText(point.score, point.x, point.y - 12);
+    });
+
+    ctx.fillStyle = "#9aabc8";
+    ctx.textAlign = "center";
+
+    points.forEach((point, index) => {
+        ctx.fillText(
+            `Audit ${index + 1}`,
+            point.x,
+            height - 10
+        );
+    });
+}
+
+    const latest = history[0];
+    const previous = history[1];
+
+    const scoreChange = latest.score - previous.score;
+    const warningChange = latest.warnings - previous.warnings;
+
+    const scoreText =
+        scoreChange > 0
+            ? `Improved by ${scoreChange} points`
+            : scoreChange < 0
+                ? `Decreased by ${Math.abs(scoreChange)} points`
+                : "No change";
+
+    const warningText =
+        warningChange < 0
+            ? `${Math.abs(warningChange)} fewer warnings`
+            : warningChange > 0
+                ? `${warningChange} more warnings`
+                : "No change";
+
+    box.innerHTML = `
+        <div class="finding">
+            <h4>Latest Audit</h4>
+            <p>${escapeHTML(latest.url)}</p>
+            <p>Quality Score: ${escapeHTML(latest.score)}/100</p>
+            <p>Warnings: ${escapeHTML(latest.warnings)}</p>
+            <p>Date: ${escapeHTML(latest.date)}</p>
+        </div>
+
+        <div class="finding">
+            <h4>Previous Audit</h4>
+            <p>${escapeHTML(previous.url)}</p>
+            <p>Quality Score: ${escapeHTML(previous.score)}/100</p>
+            <p>Warnings: ${escapeHTML(previous.warnings)}</p>
+            <p>Date: ${escapeHTML(previous.date)}</p>
+        </div>
+
+        <div class="finding">
+            <h4>Quality Score Change</h4>
+            <p>${escapeHTML(scoreText)}</p>
+        </div>
+
+        <div class="finding">
+            <h4>Warning Change</h4>
+            <p>${escapeHTML(warningText)}</p>
+        </div>
+    `;
+}
+
+$("clearHistory").addEventListener("click", () => {
+    localStorage.removeItem("realityx_history");
+    renderHistory();
+    renderComparison();
+renderTrendChart();
+});
+
+renderHistory();
+renderComparison();
+renderTrendChart();
+</script>
+
+</body>
+</html>
