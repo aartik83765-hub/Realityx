@@ -14,7 +14,7 @@ app = FastAPI(title="REALITYX")
 
 app.mount(
     "/static",
-    StaticFiles(directory="Static"),
+    StaticFiles(directory="static"),
     name="static"
 )
 
