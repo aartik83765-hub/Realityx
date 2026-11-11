@@ -14,7 +14,7 @@ app = FastAPI(title="REALITYX")
 
 app.mount(
     "/static",
-    StaticFiles(directory="static"),
+    StaticFiles(directory="Static"),
     name="static"
 )
 
@@ -149,7 +149,7 @@ def check_link(url):
 
 @app.get("/")
 def home():
-    return FileResponse("static/index.html")
+    return FileResponse("Static/index.html")
 
 
 @app.get("/api/health")
